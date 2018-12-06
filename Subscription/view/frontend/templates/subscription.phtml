@@ -1,0 +1,37 @@
+<?php if (count($block->getSubscriptions()) !== 0): ?>
+    <div class="table-wrapper worldnettps-subscriptions">
+        <table class="data table table-worldnettps-subscriptions" id="worldnettps-subscriptions">
+            <caption class="table-caption">
+                <?php /* @noEscape */ print __('WorldNetTPS Subscriptions') ?>
+            </caption>
+            <thead>
+            <tr>
+                <th scope="col" class="col">
+                    <?php /* @noEscape */ print __('Name') ?>
+                </th>
+                <th scope="col" class="col">
+                    <?php /* @noEscape */ print __('Description') ?>
+                </th>
+                <th scope="col" class="col">
+                    <?php /* @noEscape */ print __('Recurring Price') ?>
+                </th>
+                <th scope="col" class="col">
+                    <?php /* @noEscape */ print __('Start Date') ?>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($block->getSubscriptions() as $subscription) { ?>
+            <tr>
+                <td><?=$subscription['name']?></td>
+                <td><?=$subscription['description']?></td>
+                <td><?=$subscription['recurring_price']?></td>
+                <td><?=str_replace('-', '/', $subscription['start_date'])?></td>
+            </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+    </div>
+<?php else: ?>
+    <div class="message info empty"><span><?php /* @noEscape */ print __('You have no WorldNetTPS subscriptions.'); ?></span></div>
+<?php endif ?>

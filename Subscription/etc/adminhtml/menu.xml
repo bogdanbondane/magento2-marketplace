@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="WorldnetTPS_Subscription::grid" title="WorldNetTPS Subscription" module="WorldnetTPS_Subscription" sortOrder="21" parent="WorldnetTPS_Payment::manager" action="worldnettps_subscription/subscription" resource="WorldnetTPS_Subscription::grid"/>
+    </menu>
+</config>

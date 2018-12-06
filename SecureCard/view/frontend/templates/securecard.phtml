@@ -1,0 +1,69 @@
+<?php if (count($block->getSecureCards()) !== 0): ?>
+    <div class="table-wrapper worldnettps-securecards">
+        <table class="data table table-worldnettps-securecards" id="worldnettps-securecards">
+            <caption class="table-caption">
+                <?php /* @noEscape */ print __('WorldNetTPS SecureCards') ?>
+            </caption>
+            <thead>
+            <tr>
+                <th scope="col" class="col">
+                    <?php /* @noEscape */ print __('Card Holder Name') ?>
+                </th>
+                <th scope="col" class="col">
+                    <?php /* @noEscape */ print __('Card Number') ?>
+                </th>
+                <th scope="col" class="col">
+                    <?php /* @noEscape */ print __('Card Type') ?>
+                </th>
+                <th scope="col" class="col">
+                    <?php /* @noEscape */ print __('Card Expiry') ?>
+                </th>
+                <th>
+
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($block->getSecureCards() as $secureCard) { ?>
+            <tr class="entity_id_<?=$secureCard['entity_id']?>">
+                <td><?=$secureCard['card_holder_name']?></td>
+                <td><?=$secureCard['obfuscated_card_number']?></td>
+                <td><?=$secureCard['card_type']?></td>
+                <td><?=$secureCard['card_expiry'][0].$secureCard['card_expiry'][1].'/'.$secureCard['card_expiry'][2].$secureCard['card_expiry'][3]?></td>
+                <td>
+                    <a href="#" onclick="deleterow(<?=$secureCard['entity_id']?>)" title="<?php /* @noEscape */ print __('Remove item')?>" class="action action-delete securecard-delete">
+                        <span>
+                            <?php /* @noEscape */ print __('Remove item')?>
+                        </span>
+                    </a>
+                </td>
+            </tr>
+            <?php } ?>
+            </tbody>
+        </table>
+    </div>
+
+    <script type="text/javascript">
+        var url =  '/index.php/worldnettps/securecard/delete/';
+        function deleterow(rowid)
+        {
+            jQuery.ajax({
+                url: url,
+                data: { 'entity_id' : rowid},
+                type: "post",
+                cache: false,
+                success: function (data) {
+                    var response = JSON.parse(data);
+
+                    if(response['success'])
+                        jQuery('.entity_id_'+rowid).detach();
+                    else {
+                        jQuery('.messages').html('<div class="message message-error error"><div>'+response['errorString']+'</div></div>');
+                    }
+                }
+            });
+        }
+    </script>
+<?php else: ?>
+    <div class="message info empty"><span><?php /* @noEscape */ print __('You have no WorldNetTPS secure cards.'); ?></span></div>
+<?php endif ?>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="SecureCardGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">WorldnetTPS\SecureCard\Model\ResourceModel\SecureCard\Collection</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="worldnettps_securecard_record_grid_list_data_source" xsi:type="string">WorldnetTPS\SecureCard\Model\ResourceModel\SecureCard\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="WorldnetTPS\SecureCard\Model\ResourceModel\SecureCard\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">worldnettps_securecard_records</argument>
+            <argument name="eventPrefix" xsi:type="string">worldnettps_securecard_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">worldnettps_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">WorldnetTPS\SecureCard\Model\ResourceModel\SecureCard</argument>
+        </arguments>
+    </type>
+</config>
