@@ -1,0 +1,26 @@
+{
+    "name": "worldnettps/module-payment",
+    "description": "N/A",
+    "version": "1.4.0",
+    "type": "magento2-module",
+    "license": [
+        "GPL-3.0-or-later"
+    ],
+    "require": {
+        "magento/module-sales": "100.1.*",
+        "magento/module-store": "100.1.*",
+        "magento/module-quote": "100.1.*",
+        "magento/module-checkout": "100.1.*",
+        "magento/module-backend": "100.1.*",
+        "magento/module-payment": "100.1.*",
+        "magento/module-catalog": "101.0.*"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "WorldnetTPS\\Payment\\": ""
+        }
+    }
+}

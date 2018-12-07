@@ -1,0 +1,25 @@
+<script type="text/javascript">
+    function WorldnetTPSSubscriptionPeriodCount() {
+        require(
+            ['jquery'],
+            function($) {
+                if ($('#worldnettps_subscription_period_count').val() == 0) {
+                    $('#worldnettps_subscription_period_length').val('0');
+                    $('.field-period_length').prop("hidden", true);
+                } else if ($('#worldnettps_subscription_period_count').val() == 1) {
+                    $('.field-period_length').prop("hidden", false);
+                }
+            });
+    }
+
+
+    require(
+        ['jquery'],
+        function($) {
+            WorldnetTPSSubscriptionPeriodCount();
+
+            if ($('#worldnettps_subscription_entity_id').val()) {
+                $('#worldnettps_subscription_merchant_ref2').val($('#worldnettps_subscription_merchant_ref').val());
+            }
+        });
+</script>

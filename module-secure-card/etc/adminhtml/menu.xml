@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="WorldnetTPS_Payment::manager" title="WorldNetTPS Payment" module="WorldnetTPS_SecureCard" sortOrder="10" parent="Magento_Sales::sales" resource="WorldnetTPS_Payment::manager"/>
+        <add id="WorldnetTPS_SecureCard::grid" title="WorldNetTPS SecureCard" module="WorldnetTPS_SecureCard" sortOrder="20" parent="WorldnetTPS_Payment::manager" action="worldnettps_securecard/securecard" resource="WorldnetTPS_SecureCard::grid"/>
+    </menu>
+</config>

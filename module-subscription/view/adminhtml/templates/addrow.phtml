@@ -1,0 +1,55 @@
+<script type="text/javascript">
+    function WorldnetTPSSubscriptionType() {
+        require(
+            ['jquery'],
+            function($) {
+                if ($('#worldnettps_subscription_type').val() == 1) {
+                    if($('#worldnettps_subscription_recurring_price').prop("disabled")==true)
+                        $('#worldnettps_subscription_recurring_price').val('');
+                    $('#worldnettps_subscription_recurring_price').prop("disabled", false);
+
+                    if($('#worldnettps_subscription_setup_price').prop("disabled")==true)
+                        $('#worldnettps_subscription_setup_price').val('');
+                    $('#worldnettps_subscription_setup_price').prop("disabled", false);
+                } else if ($('#worldnettps_subscription_type').val() == 2) {
+                    $('#worldnettps_subscription_recurring_price').val(0);
+                    $('#worldnettps_subscription_recurring_price').prop("disabled", true);
+
+                    if($('#worldnettps_subscription_setup_price').prop("disabled")==true)
+                        $('#worldnettps_subscription_setup_price').val('');
+                    $('#worldnettps_subscription_setup_price').prop("disabled", false);
+                } else if ($('#worldnettps_subscription_type').val() == 3) {
+                    $('#worldnettps_subscription_recurring_price').val(0);
+                    $('#worldnettps_subscription_recurring_price').prop("disabled", true);
+                    $('#worldnettps_subscription_setup_price').val(0);
+                    $('#worldnettps_subscription_setup_price').prop("disabled", true);
+                }
+            });
+    }
+    function WorldnetTPSSubscriptionPeriodCount() {
+        require(
+            ['jquery'],
+            function($) {
+                if ($('#worldnettps_subscription_period_count').val() == 0) {
+                    $('#worldnettps_subscription_period_length').val('0');
+                    $('.field-period_length').prop("hidden", true);
+                } else if ($('#worldnettps_subscription_period_count').val() == 1) {
+                    $('.field-period_length').prop("hidden", false);
+                }
+            });
+    }
+
+
+    require(
+        ['jquery'],
+        function($) {
+            WorldnetTPSSubscriptionType();
+            WorldnetTPSSubscriptionPeriodCount();
+
+
+            if ($('#worldnettps_subscription_entity_id').val()) {
+                $('#worldnettps_subscription_currency2').val($('#worldnettps_subscription_currency').val());
+                $('#worldnettps_subscription_merchant_ref2').val($('#worldnettps_subscription_merchant_ref').val());
+            }
+        });
+</script>
